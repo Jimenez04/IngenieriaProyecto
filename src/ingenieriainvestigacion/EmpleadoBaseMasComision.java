@@ -19,7 +19,7 @@ public class EmpleadoBaseMasComision extends EmpleadoPorComision{
                 throw new IllegalArgumentException(
                         "El salarioBase debe ser mayor a >= 0.0"
                 );
-         }
+         } 
         this.salarioBase = salarioBase;
     }
     
