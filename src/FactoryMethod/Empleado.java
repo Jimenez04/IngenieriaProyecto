@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ingenieriainvestigacion;
+package FactoryMethod;
 
 /**
  *
@@ -20,6 +20,8 @@ public abstract class Empleado {
     }
     
     public abstract double ingresos() ;
+    
+    public abstract String toString() ;
 
     public String getPrimerNombre() {
         return primerNombre;

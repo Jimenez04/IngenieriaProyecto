@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ingenieriainvestigacion;
+package FactoryMethod;
     
 /**
  *
@@ -23,7 +23,11 @@ public class EmpleadoPorComision extends Empleado{
         this.ventasBrutas = ventasBrutas;
         this.tarifaComision = tarifaComision;
     }
-
+    @Override
+    public String toString() {
+       return "La persona: " + super.getPrimerNombre()+ " " + super.getApellidoPaterno() + " es empleado por comisión, cuenta con un con número de seguro social: "
+                + super.getNumeroSeguroSocial() + ", tiene unas ventas brutas de:" + ventasBrutas + ", y su tarifa de comisión es: "  + tarifaComision + " sus ingreso son de: " + ingresos();
+    }
     @Override
     public double ingresos() {
         return getTarifaComision() + getVentasBrutas();
@@ -62,4 +66,6 @@ public class EmpleadoPorComision extends Empleado{
         }
         this.tarifaComision = tarifaComision;
     }
+
+
 }

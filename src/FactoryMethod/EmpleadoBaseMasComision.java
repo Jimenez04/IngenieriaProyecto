@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ingenieriainvestigacion;
+package FactoryMethod;
 
 /**
  *
@@ -23,6 +23,12 @@ public class EmpleadoBaseMasComision extends EmpleadoPorComision{
         this.salarioBase = salarioBase;
     }
     
+    @Override
+    public String toString() {
+       return "La persona: " + super.getPrimerNombre()+ " " + super.getApellidoPaterno() + " es empleado por base mas comisión, cuenta con un con número de seguro social: "
+                + super.getNumeroSeguroSocial() + ", tiene unas ventas brutas de:" + super.getVentasBrutas() + ", su tarifa de comisión es: "  + super.getTarifaComision() +
+               " y su salario base es de: "  + salarioBase + " ,sus ingreso son de: " + ingresos();
+    }
     @Override
     public double ingresos() {
         return getSalarioBase() + super.ingresos();

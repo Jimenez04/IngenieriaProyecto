@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ingenieriainvestigacion;
+package FactoryMethod;
 
 /**
  *
@@ -17,7 +17,7 @@ public class EmpleadoPorHoras extends Empleado{
     public EmpleadoPorHoras(String primerNombre, String apellidoPaterno, String numeroSocial, double sueldo, double horas) {
         super(primerNombre, apellidoPaterno, numeroSocial);
         
-        if(horas < 0.0){
+        if(horas < 0.0 || horas > 168.0){
                 throw new IllegalArgumentException(
                         "Las horas deben ser mayor a >= 0.0"
                 );
@@ -31,7 +31,11 @@ public class EmpleadoPorHoras extends Empleado{
         this.sueldo = sueldo;
     }
 
-    
+        @Override
+    public String toString() {
+       return "La persona: " + super.getPrimerNombre()+ " " + super.getApellidoPaterno() + " es empleado por horas, cuenta con un con número de seguro social: "
+                + super.getNumeroSeguroSocial() + " el sueldo es de:" + sueldo + ", y las horas trabajadas son "  + horas + " sus ingreso son de: " + ingresos();
+    }
     @Override
     public double ingresos() {
         if (getHoras() <= 40) {
