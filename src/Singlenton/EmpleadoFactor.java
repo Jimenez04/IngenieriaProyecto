@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package FactoryMethod;
+package Singlenton;
 
 import Singlenton.Singlenton;
 import java.util.regex.Matcher;
@@ -18,8 +18,7 @@ public class EmpleadoFactor {
    
     Empleado nuevoempleado;
     
-    Object []listaempleados = new Object[5]; 
-    int i = 0;
+    Singlenton listaBD;
     
     public EmpleadoFactor(){
         //     SeleccionEmpleado(
@@ -28,15 +27,18 @@ public class EmpleadoFactor {
         //     sueldo,  horas, //EmpleadoPorHoras
         //     ventasBrutas,  tarifaComision, //PorComision
         //     salariobase //BaseMasComision);
-        
+        listaBD = Singlenton.getSinglentonInstance(new Object[5]);
+         
         SeleccionEmpleado("Jose", "Jimenez", "5-0425-0352", 100000, 0, 0, 0, 0, 0); //Empleado asalariado
         SeleccionEmpleado("Leonela", "Bermudez ", "0-0000-0000", 0, 5000, 50, 0, 0, 0); //Empleado por horas
         SeleccionEmpleado("Kryssia", "Viales", "0-0000-0000", 0, 0, 0, 1000000.0, 0.2, 0); //Empleado por comision
         SeleccionEmpleado("Juanito", "Perez", "0-0000-000", 0, 0, 0, 1000000, 0.1, 400000); //Empleado base mas comision
         
-        for(Object empleadoespecifico : listaempleados){
+        Object[] empl =  listaBD.getListaEmpleados();
+
+          for(Object empleadoespecifico : empl){
                 mostrarinfo(empleadoespecifico);
-        }
+            }
     }
     
     public void mostrarinfo(Object infoEmpleado){
@@ -62,8 +64,7 @@ public class EmpleadoFactor {
                         nuevoempleado = new EmpleadoPorComision(primerNombre, apellidoPaterno, numeroSocial, ventasBrutas, tarifaComision);
                     }
                 }
-             listaempleados[i] = nuevoempleado;
-             i++;
+             listaBD.setListaEmpleados(nuevoempleado);
              nuevoempleado = null;
         }else {
          System.out.println("Los campos de texto no son validos");
