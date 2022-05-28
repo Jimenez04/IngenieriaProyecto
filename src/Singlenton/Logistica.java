@@ -15,10 +15,13 @@ public class Logistica {
         EmpleadoFactor e = new EmpleadoFactor();
         
         
-         Object[] listaDePrueba =  Singlenton.getListaEmpleados();
-            System.out.println("Lista en main"); 
-          for(Object empleadoespecifico : listaDePrueba){
+         //Object[] listaDePrueba =  Singlenton.getListaEmpleados();
+            //System.out.println("Lista en main"); 
+         // for(Object empleadoespecifico : listaDePrueba){
                 //System.out.println(empleadoespecifico); 
-            }
+           // }
+          
+          Empleado empl = new EmpleadoAsalariado(" ", " ", " ", 0);
+          empl.prueba2();
     }
 }

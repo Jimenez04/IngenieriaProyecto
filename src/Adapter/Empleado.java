@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Singlenton;
+package Adapter;
 
 /**
  *
@@ -26,13 +26,7 @@ public abstract class Empleado {
     public String getPrimerNombre() {
         return primerNombre;
     }
-       public void prueba2(){
-        Object[] listaDePrueba =  Singlenton.getListaEmpleados();
-            System.out.println("Lista en Empleado"); 
-                for(Object empleadoespecifico : listaDePrueba){
-                      System.out.println(empleadoespecifico); 
-                }
-       }
+
     /**
      * @param primerNombre the primerNombre to set
      */

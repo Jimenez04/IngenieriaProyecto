@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Singlenton;
+package Adapter;
 
 import Singlenton.Singlenton;
 import java.util.regex.Matcher;
@@ -17,6 +17,7 @@ public class EmpleadoFactor {
     
    
     Empleado nuevoempleado;
+    AnalizarEmpleados adapter; 
     
     Singlenton listaBD;
     
@@ -27,18 +28,22 @@ public class EmpleadoFactor {
         //     sueldo,  horas, //EmpleadoPorHoras
         //     ventasBrutas,  tarifaComision, //PorComision
         //     salariobase //BaseMasComision);
-        listaBD = Singlenton.getSinglentonInstance(new Object[5]);
+        listaBD = Singlenton.getSinglentonInstance(new Object[4]); //Llamada al singlenton
          
         SeleccionEmpleado("Jose", "Jimenez", "5-0425-0352", 100000, 0, 0, 0, 0, 0); //Empleado asalariado
         SeleccionEmpleado("Leonela", "Bermudez ", "0-0000-0000", 0, 5000, 50, 0, 0, 0); //Empleado por horas
         SeleccionEmpleado("Kryssia", "Viales", "0-0000-0000", 0, 0, 0, 1000000.0, 0.2, 0); //Empleado por comision
         SeleccionEmpleado("Juanito", "Perez", "0-0000-000", 0, 0, 0, 1000000, 0.1, 400000); //Empleado base mas comision
         
-        Object[] empleadosBD =  listaBD.getListaEmpleados();
+        Object[] llamadaBD =  listaBD.getListaEmpleados();
 
-          for(Object empleadoespecifico : empleadosBD){
-                mostrarinfo(empleadoespecifico);
-            }
+          for(Object empleadoespecifico : llamadaBD){
+                //mostrarinfo(empleadoespecifico);
+          }
+          
+          adapter  = new Adaptador();  //declarar instancia adaptador
+          adapter.conversion(llamadaBD); 
+          
     }
     
     public void mostrarinfo(Object infoEmpleado){
