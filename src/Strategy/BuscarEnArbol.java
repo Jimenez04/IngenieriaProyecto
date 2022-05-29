@@ -1,37 +1,15 @@
-package Composite;
+package Strategy;
 
-public class LlenarArbol {
-    Arbol inicio = null;
+public class BuscarEnArbol {
     int altura = 0;
     int nivelderecho = 0; int nivelizq = 0;
-    int sumatoria = 0;
-    int contador = 1;
-    public int contadorhilo = 0;
     
-    public LlenarArbol(){
-    }
-    
-    public boolean vacio() { // Si esta vacio retorna null
-        return inicio == null;
-    }
-    
-    public void Nuevo(Empleado nuevoempleado){
-        if (vacio() == true) {
-            Arbol parcialempleado = new Arbol(nuevoempleado);
-                 inicio = parcialempleado;
-                contador++;
-        } else {
-            Arbol parcialempleado = new Arbol(nuevoempleado);
-                inicio.agregar(parcialempleado);
-                contador++;
-        }
-    }
-    public Empleado Buscar(double ingreso) {
+    public Empleado Buscar(Arbol pivoteArbol,double ingreso) {
  		Arbol aux = null;
  		altura = 0;
  		nivelderecho = 0;
  		nivelizq = 0;
- 		aux = BuscarPersona(inicio, ingreso,0,"");
+ 		aux = BuscarPersona(pivoteArbol, ingreso,0,"");
  		return aux.InfoEmpleado;
     }
     private Arbol BuscarPersona(Arbol aux, double ingresos, int altura, String camino) { 
@@ -59,21 +37,4 @@ public class LlenarArbol {
  		}
  	return aux1;
  	}
-    
-    public int retornarAltura() {
-        altura = 0;
-        retornarAltura(inicio, 0);
-        return altura;
-    }
-
-    private void retornarAltura(Arbol recorrido, int nivel) {
-        if (recorrido != null) {
-            retornarAltura(recorrido.Izquierda, nivel + 1);
-            if (nivel > altura) {
-                altura = nivel;
-            }
-            retornarAltura(recorrido.Derecha, nivel + 1);
-        }
-    }
-    
 }

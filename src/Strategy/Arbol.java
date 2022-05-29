@@ -1,4 +1,4 @@
-package Composite;
+package Strategy;
 
 class Arbol {
     public Arbol Izquierda = null;
