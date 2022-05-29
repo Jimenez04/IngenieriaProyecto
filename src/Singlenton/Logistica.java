@@ -21,7 +21,7 @@ public class Logistica {
                 //System.out.println(empleadoespecifico); 
            // }
           
-          Empleado empl = new EmpleadoAsalariado(" ", " ", " ", 0);
-          empl.prueba2();
+          //Empleado empl = new EmpleadoAsalariado(" ", " ", " ", 0);
+          //empl.prueba2();
     }
 }

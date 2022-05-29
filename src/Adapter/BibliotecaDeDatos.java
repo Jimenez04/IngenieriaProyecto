@@ -17,15 +17,12 @@ public class BibliotecaDeDatos {
     
     
     public void mayoringreso(JSONArray JSONEmpleados){
+        System.out.println(JSONEmpleados); 
         double pivote = 0;  
         String nombre = "";
             for (int i = 0; i < JSONEmpleados.length(); i++) {
                 try {
                     JSONObject jsonObject = JSONEmpleados.getJSONObject(i);
-                    if (jsonObject.has("clave")) {
-                        String valor = jsonObject.getString("clave");
-                        // Aquí hacer algo con el valor
-                    }
                     double valor  = jsonObject.getDouble("Ingresos");
                      if(pivote < valor ){
                             nombre = jsonObject.getString("Nombre");

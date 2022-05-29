@@ -38,7 +38,7 @@ public class Adaptador implements AnalizarEmpleados{
                      JSON.put("Nombre", empleadoespecifico.getPrimerNombre() );
                      JSON.put("Ingresos", empleadoespecifico.ingresos());
                      listaempleadosJSON.put(JSON);
-                     JSON = new JSONObject();
+                     JSON = new JSONObject(); //Queda en blanco
                 } catch (JSONException ex) {
                     Logger.getLogger(Adaptador.class.getName()).log(Level.SEVERE, null, ex);
                 }

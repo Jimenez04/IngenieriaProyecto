@@ -5,7 +5,6 @@
  */
 package FactoryMethod;
 
-import Singlenton.Singlenton;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -18,7 +17,7 @@ public class EmpleadoFactor {
    
     Empleado nuevoempleado;
     
-    Object []listaempleados = new Object[5]; 
+    Object []listaempleados = new Object[5]; //opcional
     int i = 0;
     
     public EmpleadoFactor(){
@@ -29,10 +28,10 @@ public class EmpleadoFactor {
         //     ventasBrutas,  tarifaComision, //PorComision
         //     salariobase //BaseMasComision);
         
-        SeleccionEmpleado("Jose", "Jimenez", "5-0425-0352", 100000, 0, 0, 0, 0, 0); //Empleado asalariado
-        SeleccionEmpleado("Leonela", "Bermudez ", "0-0000-0000", 0, 5000, 50, 0, 0, 0); //Empleado por horas
-        SeleccionEmpleado("Kryssia", "Viales", "0-0000-0000", 0, 0, 0, 1000000.0, 0.2, 0); //Empleado por comision
-        SeleccionEmpleado("Juanito", "Perez", "0-0000-000", 0, 0, 0, 1000000, 0.1, 400000); //Empleado base mas comision
+        HacerEmpleados("Jose", "Jimenez", "5-0425-0352", 100000, 0, 0, 0, 0, 0); //Empleado asalariado
+        HacerEmpleados("Leonela", "Bermudez ", "0-0000-0000", 0, 5000, 50, 0, 0, 0); //Empleado por horas
+        HacerEmpleados("Kryssia", "Viales", "0-0000-0000", 0, 0, 0, 1000000.0, 0.2, 0); //Empleado por comision
+        HacerEmpleados("Juanito", "Perez", "0-0000-000", 0, 0, 0, 1000000, 0.1, 400000); //Empleado base mas comision
         
         for(Object empleadoespecifico : listaempleados){
                 mostrarinfo(empleadoespecifico);
@@ -43,7 +42,7 @@ public class EmpleadoFactor {
         System.out.println(infoEmpleado); 
     }
     
-    public void SeleccionEmpleado(
+    public void HacerEmpleados(
             String primerNombre, String apellidoPaterno, String numeroSocial, //empleado
             double salarioSemanal, //Asalariado
             double sueldo, double horas, //EmpleadoPorHoras
@@ -51,13 +50,21 @@ public class EmpleadoFactor {
             double salariobase //BaseMasComision
     ){      //System.out.println(ventasBrutas + " o " + tarifaComision);
         if(validarstring(apellidoPaterno) && validarstring(primerNombre)){ 
+            
                 if(validarnum(salarioSemanal) && salarioSemanal > 0.0){ //Asalariado
+                    
                     nuevoempleado = new EmpleadoAsalariado(primerNombre, apellidoPaterno, numeroSocial, salarioSemanal);
+                    
                 }else if(validarnum(sueldo) && sueldo > 0.0 && validarnum(horas) && horas > 0.0){ //EmpleadoPorHoras
+                    
                     nuevoempleado = new EmpleadoPorHoras(primerNombre, apellidoPaterno, numeroSocial, sueldo, horas);
+                    
                 }else if(validarnum(ventasBrutas) && ventasBrutas > 0.0 && validarnum(tarifaComision) && tarifaComision > 0.0){ //PorComision
+                    
                     if(validarnum(salariobase) && salariobase > 0.0){ //BaseMasComision);
+                        
                         nuevoempleado = new EmpleadoBaseMasComision(primerNombre, apellidoPaterno, numeroSocial, ventasBrutas, tarifaComision, salariobase);
+                        
                     }else {
                         nuevoempleado = new EmpleadoPorComision(primerNombre, apellidoPaterno, numeroSocial, ventasBrutas, tarifaComision);
                     }

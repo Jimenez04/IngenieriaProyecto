@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Adapter;
+package Composite;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -16,9 +16,8 @@ public class EmpleadoFactor {
     
    
     Empleado nuevoempleado;
-    AnalizarEmpleados adapter; 
     
-    Singlenton listaBD;
+    LlenarArbol listaBD;
     
     public EmpleadoFactor(){
         //     SeleccionEmpleado(
@@ -27,22 +26,27 @@ public class EmpleadoFactor {
         //     sueldo,  horas, //EmpleadoPorHoras
         //     ventasBrutas,  tarifaComision, //PorComision
         //     salariobase //BaseMasComision);
-        listaBD = Singlenton.getSinglentonInstance(new Object[4]); //Llamada al singlenton
+        listaBD = new LlenarArbol(); 
          
-        SeleccionEmpleado("Jose", "Jimenez", "5-0425-0352", 1500000, 0, 0, 0, 0, 0); //Empleado asalariado
+        SeleccionEmpleado("Jose", "Jimenez", "5-0425-0352", 100000, 0, 0, 0, 0, 0); //Empleado asalariado
         SeleccionEmpleado("Leonela", "Bermudez ", "0-0000-0000", 0, 5000, 50, 0, 0, 0); //Empleado por horas
         SeleccionEmpleado("Kryssia", "Viales", "0-0000-0000", 0, 0, 0, 1000000.0, 0.2, 0); //Empleado por comision
         SeleccionEmpleado("Juanito", "Perez", "0-0000-000", 0, 0, 0, 1000000, 0.1, 400000); //Empleado base mas comision
+        SeleccionEmpleado("Jose", "Jimenez", "5-0425-0352", 100, 0, 0, 0, 0, 0); //Empleado asalariado
+        SeleccionEmpleado("Jose", "Jimenez", "5-0425-0352", 110, 0, 0, 0, 0, 0); //Empleado asalariado
+        SeleccionEmpleado("Jose", "Jimenez", "5-0425-0352", 105, 0, 0, 0, 0, 0); //Empleado asalariado
+        SeleccionEmpleado("Jose", "Jimenez", "5-0425-0352", 111, 0, 0, 0, 0, 0); //Empleado asalariado
+        listaBD.contadorhilo++;
+        Empleado infoEmpleado = listaBD.Buscar(100000.0);
+        //Empleado infoEmpleado2 = listaBD.Buscar(275000.0);
+        //Empleado infoEmpleado3 = listaBD.Buscar(1000000.2);
+        //Empleado infoEmpleado4 = listaBD.Buscar(1400000.1);
+        //Empleado infoEmpleado5 = listaBD.Buscar(100);
+        //Empleado infoEmpleado6 = listaBD.Buscar(110);
+        //Empleado infoEmpleado7 = listaBD.Buscar(105);
+        //Empleado infoEmpleado8 = listaBD.Buscar(111);
         
-        Object[] llamadaBD =  listaBD.getListaEmpleados();
-
-          for(Object empleadoespecifico : llamadaBD){
-                //mostrarinfo(empleadoespecifico);
-          }
-          
-          adapter  = new Adaptador();  //declarar instancia adaptador
-          adapter.conversion(llamadaBD); 
-          
+        mostrarinfo(infoEmpleado);
     }
     
     public void mostrarinfo(Object infoEmpleado){
@@ -68,7 +72,7 @@ public class EmpleadoFactor {
                         nuevoempleado = new EmpleadoPorComision(primerNombre, apellidoPaterno, numeroSocial, ventasBrutas, tarifaComision);
                     }
                 }
-             listaBD.setListaEmpleados(nuevoempleado);
+             listaBD.Nuevo(nuevoempleado);
              nuevoempleado = null;
         }else {
          System.out.println("Los campos de texto no son validos");

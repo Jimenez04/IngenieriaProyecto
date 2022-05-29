@@ -3,8 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Adapter;
-
+package Composite;
 
 /**
  *
@@ -14,5 +13,7 @@ public class Logistica {
     public static void main(String[] args) {
         // TODO code application logic here
         EmpleadoFactor e = new EmpleadoFactor();
+        Thread copiaseguridad = new Thread(new CopiaSeguridad());
+        copiaseguridad.start();
     }
 }
